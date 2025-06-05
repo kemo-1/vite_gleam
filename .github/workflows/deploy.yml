@@ -2,13 +2,10 @@ name: Deploy
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
 
 jobs:
   build:
-    name: Build the project 
+    name: Build the project
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +17,7 @@ jobs:
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
-        
+
       - name: install gleam
         uses: erlef/setup-beam@v1
         with:
@@ -28,11 +25,11 @@ jobs:
           gleam-version: "1.6.3"
           rebar3-version: "3"
           # elixir-version: "1.15.4"
-      - run: gleam deps download 
-        
+      - run: gleam deps download
+
       - name: Build project
         run: npm run build
-        
+
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action

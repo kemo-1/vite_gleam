@@ -43,13 +43,13 @@ fn update(model: Model, msg: Msg) -> Model {
 // VIEW ------------------------------------------------------------------------
 
 fn view(model: Model) -> Element(Msg) {
-  let styles = [#("width", "100vw"), #("height", "100vh"), #("padding", "1rem")]
+  let styles = [#("width", "25px"), #("height", "100px")]
   let count = int.to_string(model)
 
-  html.div([attribute.style(styles)], [
+  html.div([attribute.styles(styles)], [
     html.div([], [
       html.button([event.on_click(Incr)], [element.text("+")]),
-      html.p([attribute.style([#("text-align", "center")])], [
+      html.p([attribute.styles([#("text-align", "center")])], [
         element.text(count),
       ]),
       html.button([event.on_click(Decr)], [element.text("-")]),
